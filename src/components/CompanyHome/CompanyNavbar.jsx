@@ -38,10 +38,6 @@ export default function CompanyNavbar({ activePage, onPageChange }) {
                         </div>
                     </div>
                     <div className="hidden sm:flex items-center">
-                        <div className="flex items-center justify-center rounded-full bg-white h-8 w-8">
-                            <span className="text-gray-800">H</span>
-                        </div>
-                        <span className="text-white ml-2">Hanish Patil</span>
                         <button className='bg-white px-2 py-1 rounded-lg mx-6 hover:bg-gray-200' onClick={logoutFunction}>Log out</button>
                     </div>
                 </div>

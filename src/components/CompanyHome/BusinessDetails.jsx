@@ -202,7 +202,7 @@ export default function BusinessDetails({ id, company_name,logoUrl, Projects, lo
             </div>
             <div className='flex justify-end'>
                 <button className='bg-blue-300 py-2 m-4 w-40 rounded-lg' onClick={openModal}>
-                    ADD PROJECTss
+                    ADD PROJECT
                 </button>
             </div>
             <div className='flex-1 grid grid-cols-4 gap-4 justify-end'>

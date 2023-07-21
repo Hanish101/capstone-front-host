@@ -27,7 +27,7 @@ export default function CompCards({handleBusDetails, filter}) {
       <h1 className="text-3xl">
         Businesses
       </h1>
-      <div className='h-full flex flex-wrap justify-center p-4 item-top'>
+      <div className='h-full flex flex-wrap justify-center space-x-4 item-top'>
         {companyData.slice(0, 6).map((companyData, index) => (
           <CompanyCardData key={index} companyData={companyData} handleBusDetails={handleBusDetails}/>
         ))}

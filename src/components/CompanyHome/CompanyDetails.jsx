@@ -87,10 +87,7 @@ export default function CompanyDetails({ handleBusinessClicked }) {
                     <CompanyCardElement
                         onClick={() => handleBusinessClick(company)}
                         key={index}
-                        companyName={company?.company_name}
-                        location={company?.location}
-                        industry={company?.industry}
-                        projects={company?.projects}
+                        companyData = {company}
                     />
                 ))}
 

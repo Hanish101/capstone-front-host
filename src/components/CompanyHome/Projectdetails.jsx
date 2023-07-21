@@ -17,21 +17,27 @@ export default function Projectdetails({ projectData, projectView }) {
   const [teams, setTeams] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      console.log("__project devs___", projectData.devlist)
-      const developerPromises = projectData.devlist.map((devId) => {
-        return fetch(`${API_LINK}/api/dev/${devId}`)
-          .then(response => response.json())
-          .then((data) => data.data)
-          .catch(error => console.error(`Error fetching developer data: ${error}`));
-      });
 
-      const developerData = await Promise.all(developerPromises);
-      setDevelopers(developerData);
-      console.log("___Dev data__", developers)
+    const fetchData = async (devID) => {
+      try {
+        const response = await fetch(`${API_LINK}/api/dev/${devID}`);
+        const data = await response.json();
+        return data;
+      } catch (error) {
+        console.error(`Error fetching data for element ${element}:`, error);
+        return null;
+      }
     };
-    fetchData()
-  }, []);
+
+    const fetchDataArray = async () => {
+      const promises = projectData.devlist.map(fetchData);
+      const fetchedData = await Promise.all(promises);
+      // console.log("datafetched", fetchedData)
+      setDevelopers(fetchedData);
+    };
+
+    fetchDataArray();
+  }, [projectData.devlist]);
 
   // Update project
   const [showModal, setShowModal] = useState(false);
@@ -45,22 +51,22 @@ export default function Projectdetails({ projectData, projectView }) {
   };
 
   const skillsData = [
-    ['javascript','JavaScript'],
-    ['python','Python'],
-    ['java','Java'],
-    ['html','HTML'],
-    ['css','CSS'],
-    ['react','React.js'],
-    ['node','Node.js'],
-    ['docker','Docker'],
-    ['mongodb','MongoDB'],
-    ['uiux','UI/UX'],
-    ['sql','SQL'],
-    ['git','Git'],
-    ['agile','Agile'],
-    ['aws','AWS'],
-    ['testing','Testing'],
-];
+    ['javascript', 'JavaScript'],
+    ['python', 'Python'],
+    ['java', 'Java'],
+    ['html', 'HTML'],
+    ['css', 'CSS'],
+    ['react', 'React.js'],
+    ['node', 'Node.js'],
+    ['docker', 'Docker'],
+    ['mongodb', 'MongoDB'],
+    ['uiux', 'UI/UX'],
+    ['sql', 'SQL'],
+    ['git', 'Git'],
+    ['agile', 'Agile'],
+    ['aws', 'AWS'],
+    ['testing', 'Testing'],
+  ];
 
   const [selectedSkills, setSelectedSkills] = useState(projectData.technology);
   const [projectName, setProjectName] = useState(projectData.project_name);
@@ -107,15 +113,13 @@ export default function Projectdetails({ projectData, projectView }) {
           }
           console.log("___Update___", data.data)
         })
+
         .catch((err) => toast(err))
     }
     else {
       toast("Please login to delete")
     }
-
     closeModal()
-
-
   }
 
 
@@ -133,7 +137,7 @@ export default function Projectdetails({ projectData, projectView }) {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${token}`,
-          
+
         }
       })
         .then((response) => response.json())
@@ -158,52 +162,59 @@ export default function Projectdetails({ projectData, projectView }) {
   return (
     <div className='w-full flex flex-col'>
       <ToastContainer />
-      <div className="w-full h-300 rounded-xl bg-blue-200">
-        <div className="p-4">
+      <div className="h-300 rounded-xl bg-blue-200 mx-4">
+        <div className="p-4 bg-gray-100">
           <div className="flex items-center justify-between mb-4">
-            <div className="text-xl text-center font-bold mb-2">{projectData.project_name}</div>
+            <div className="text-xl text-center font-bold mb-2 text-black">{projectData.project_name}</div>
             {projectView === 'company' ? (
               <div>
                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg mr-4" onClick={openModal}>Update</button>
                 <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg" onClick={(event) => deleteProject(event, projectData.id)}>Delete</button>
-              </div>) :
+              </div>
+            ) :
               null
             }
           </div>
-          <div className='bg-blue-500 p-2 rounded-lg inline'>{projectView}</div>
-          <p className="text-lg mb-4">{projectData.description}</p>
+          <p className="text-lg mb-4 text-black">{projectData.description}</p>
           <div className="flex items-center mb-4">
             <div className="flex items-center mr-4">
-              <CheckCircleOutline className="text-blue-500" />
-              <span className="text-blue-500">{projectData.timeframe}</span>
+              <CheckCircleOutline className="text-black" />
+              <span className="text-black">{projectData.timeframe}</span>
             </div>
             <div className="flex items-center">
-              <RemoveCircleOutline className="text-blue-500" />
-              <span className="text-blue-500">{projectData.team.length} Developers</span>
+              <RemoveCircleOutline className="text-black" />
+              <span className="text-black">{projectData.team.length} Developers</span>
             </div>
           </div>
           <div className="flex flex-wrap">
             {projectData.technology.map((tech, index) => (
               <div
                 key={index}
-                className="bg-blue-300 text-blue-800 py-1 px-3 rounded-full text-sm mr-2 mb-2"
+                className="bg-gray-200 text-black py-1 px-3 rounded-lg text-sm mr-2 mb-2"
               >
                 {tech}
               </div>
             ))}
           </div>
         </div>
-        <div className="flex items-center justify-between px-4 py-2 bg-blue-500 rounded-b-xl">
-          <div className="text-white font-semibold">${projectData.counter ? 'Active' : 'Inactive'}</div>
+
+        <div className="flex items-center justify-between px-4 py-2 bg-black ">
           <div className="text-white text-xs">{projectData.createdAt}</div>
         </div>
       </div>
-      {/* <div className='mx-6 text-lg font-semibold'>Devlopers</div>
-      <div className='bg-blue-200 flex-1 grid grid-cols-2 gap-4 justify-end rounded-xl mx-4 py-2'>
+      <div className='mx-6 text-lg font-semibold'>Developers</div>
+      <div className='bg-blue-200 flex-1 grid grid-cols-5 gap-4 justify-end rounded-xl mx-4 p-2'>
         {developers.map((developer) => (
-          <DevloperCardData key={developer.id} devData={developer} handleDevDetails={() => { }} />
+          // Check for missing data in developer object
+          developer.data && developer.data.id ? (
+            <DevloperCardData key={developer.data.id} devData={developer.data} handleDevDetails={() => { }} />
+          ) : (
+            <div key={Math.random()} className="text-red-600 font-semibold">
+              Missing developer data
+            </div>
+          )
         ))}
-      </div> */}
+      </div>
 
       {showModal && (
         <div className="fixed z-10 inset-0 overflow-y-auto">

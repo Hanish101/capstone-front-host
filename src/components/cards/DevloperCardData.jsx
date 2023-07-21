@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 
 export default function DevloperCardData({ devData, handleDevDetails }) {
 
@@ -7,27 +7,32 @@ export default function DevloperCardData({ devData, handleDevDetails }) {
         console.log("clickes")
     }
 
-    
+
     const getRandomColorIndex = () => {
         return Math.floor(Math.random() * Object.keys(colors).length);
     };
 
     // Custom colors from your Tailwind CSS configuration
     const colors = {
-        cardorange: '#ffe1cc',
-        cardpurple: '#e3dbfa',
-        cardgreen: '#d4f6ed',
-        cardblue: '#dff2ff',
-        cardgrey: '#eceef5',
+        cardorange: '#FFD0B0',
+        cardpurple: '#D5C4F7',
+        cardgreen: '#A8E3D8',
+        cardblue: '#B0E8FF',
+        cardgrey: '#D0D3DB',
+        cardyellow: '#FFDDA0',
+        cardpink: '#FFB7E0',
+        cardbrown: '#C3B29D',
+        cardred: '#FFB7B7',
     };
-    
+
+
     const randomColor = getRandomColorIndex();
 
 
 
     return (
 
-        <div className="shadow-lg rounded-lg p-4 w-72 h-90 border-2 border-gray-200 m-2"
+        <div className="shadow-lg rounded-lg p-4 w-72 h-96 border-2 bg-white m-2"
             onClick={() => handleDetailClick()}>
             <div className="flex justify-center items-center rounded-lg" style={{ backgroundColor: Object.values(colors)[randomColor] }}>
                 <img
