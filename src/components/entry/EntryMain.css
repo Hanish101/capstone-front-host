@@ -1,0 +1,45 @@
+.entry-main{
+    height: 100vh;
+    width: 100vw;
+}
+.entry-main-bg{
+    background-image:url('../../assets/BG-1920x1080.jpg');
+    background-color: rgba(255, 255, 255, 0.5);
+    /* display: flex; */
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.entry-main::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.entry-main-page {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    border-radius: 5% 0 0 5%;
+    padding-top: 100px;
+  }
+
+
+  @media (max-width: 1024px) {
+    .entry-main-page {
+      width: 100%;
+      border-radius: 0;
+    }
+  }

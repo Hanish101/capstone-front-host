@@ -1,0 +1,66 @@
+.app{
+  min-height: 100vh;
+  background-color: coral;
+}
+
+
+/* Header */
+
+.header-main{
+  margin: 0 15vw;
+  height: 10vh;
+  background-color: aqua;
+}
+
+.landing-page{
+  min-height: 60vh;
+  margin: 0 15vw;
+}
+
+
+
+/* Footer */
+
+.footer-main{
+  margin: 0 15vw;
+}
+
+
+@media (max-width: 1280px) {
+  .footer-main {
+    height: 600px;
+  }
+  .foot-container{
+    height: 600px;
+  }
+  
+}
+
+@media (max-width: 768px) {
+  .footer-main {
+    height: 900px;
+  }
+  .foot-container{
+    height: 600px;
+  }
+  .foot-container-mid{
+    height: 300px;
+  }
+  
+}
+
+@media (min-width: 1281px) {
+  .footer-main {
+    height: 300px;
+  }
+  .foot-container{
+    height: 300px;
+  }
+}
+
+
+.square-30vh{
+  background-color: darkgoldenrod;
+  height: 300px;
+  width: 300px;
+}
