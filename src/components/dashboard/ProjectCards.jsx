@@ -25,7 +25,7 @@ export default function ProjectCards({handleProDetails, filter}) {
       <h1 className="text-3xl">
         Projects {filter}
       </h1>
-      <div className=' h-[800px] flex flex-wrap justify-center p-4 pb-8 item-top overflow-y-scroll'>
+      <div className=' h-[800px] max-w-[1600px] flex flex-wrap flex-cols-4 justify-center gap-4 mx-8 item-top overflow-y-scroll'>
         {projectData.map((projectData, index) => (
           <ProjectCardData key={index} projectData={projectData} handleProDetails={handleProDetails} />
         ))}

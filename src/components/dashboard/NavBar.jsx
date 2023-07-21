@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { API_LINK } from '../../../constants';
+import { useNavigate } from 'react-router-dom';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function NavBar({ activePage, onPageChange }) {
+
+    const navigate = useNavigate()
 
     const [userData, setUserData] = useState('')
     const [devFName, setDevFName] = useState('');
@@ -120,6 +123,14 @@ export default function NavBar({ activePage, onPageChange }) {
         }
     }
 
+    const logoutFunction = () => {
+        localStorage.removeItem('accessToken')
+        localStorage.removeItem('accessTokenCreationDate')
+        localStorage.removeItem('userID')
+        navigate('/')
+
+    }
+
 
 
     return (
@@ -155,12 +166,15 @@ export default function NavBar({ activePage, onPageChange }) {
                             <div className="flex items-center justify-center rounded-full bg-white h-8 w-8"></div>
                         ) : (
                             <>
-                                <div className='flex items-center' onClick={openModal}>
+                                <div className='flex items-center'>
                                     <div className="flex items-center justify-center rounded-full bg-white h-8 w-8">
                                         <span className="text-gray-800">{userData.dev_first_name[0].toUpperCase()}</span>
                                     </div>
                                     <span className="text-white ml-2">{userData.dev_first_name} {userData.dev_last_name}</span>
+                                    <button className='bg-white px-2 py-1 rounded-lg hover:bg-gray-200 mx-6' onClick={openModal}>Update</button>
+                                    <button className='bg-white px-2 py-1 rounded-lg hover:bg-gray-200' onClick={logoutFunction}>Log out</button>
                                 </div>
+                                
                             </>
                         )
                         }

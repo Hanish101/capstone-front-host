@@ -32,15 +32,6 @@ function App() {
       />
       </Routes>
     </BrowserRouter>
-
-    // <div className='app'>
-    //   {/* <Header/>
-    //   <ProxyContent/>
-    //   <Footer/> */}
-    //   {/* <EntryMain/> */}
-    //   {/* <SkillList/> */}
-    //   <DevComp/>
-    // </div>
   )
 }
 

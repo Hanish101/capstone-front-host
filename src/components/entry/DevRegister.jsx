@@ -73,13 +73,7 @@ export default function DevRegister() {
 
         formData.append('image', file)
 
-        const jsonPayload = JSON.stringify(Object.fromEntries(formData));
-
-        console.log('JSON payload:', jsonPayload);
-
         formData.set('price', price)
-
-        console.log(selectedSkills)
 
         const token = localStorage.getItem('accessToken')
 
@@ -89,7 +83,6 @@ export default function DevRegister() {
             body: formData,
             headers: {
                 'Authorization': `Bearer ${token}`,
-                // 'Content-Type': 'application/json',
             },
         })
             .then((response) => {
@@ -103,8 +96,11 @@ export default function DevRegister() {
                     toast(data.message)
                 }
                 if(data.id){
-                    navigate('/dashboard')
                     localStorage.setItem('userID', data.data.id);
+
+                    if(1){
+                        navigate('/dashboard')
+                    }
 
                 }
             })

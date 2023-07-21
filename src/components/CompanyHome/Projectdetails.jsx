@@ -161,7 +161,7 @@ export default function Projectdetails({ projectData, projectView }) {
       <div className="w-full h-300 rounded-xl bg-blue-200">
         <div className="p-4">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-bold mb-2">{projectData.project_name}</h2>
+            <div className="text-xl text-center font-bold mb-2">{projectData.project_name}</div>
             {projectView === 'company' ? (
               <div>
                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg mr-4" onClick={openModal}>Update</button>

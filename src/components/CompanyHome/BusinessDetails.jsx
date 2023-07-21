@@ -7,8 +7,18 @@ import ProjectCardData from '../cards/ProjectCardData';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function BusinessDetails({ id, company_name, Projects, location, industry, description, present, createdAt, updatedAt, handleProjectClicked }) {
+export default function BusinessDetails({ id, company_name,logoUrl, Projects, location, industry, description, present, createdAt, updatedAt, handleProjectClicked }) {
     const [showModal, setShowModal] = useState(false);
+
+    const dateFormat = (formdate) => {
+        console.log("___date___", formdate)
+        const date = new Date(formdate);
+        return date.toLocaleDateString("en-US", {
+        day: "2-digit",
+        month: "long",
+        year: "numeric",
+    });
+    }
 
     const openModal = () => {
         setShowModal(true);
@@ -165,22 +175,24 @@ export default function BusinessDetails({ id, company_name, Projects, location, 
 
 
     return (
-        <div className='w-full flex flex-col'>
+        <div className='w-full flex flex-col '>
             <ToastContainer />
             <div className="relative w-auto rounded-lg shadow-lg">
                 <div className="bg-gray-100 p-4">
-                    <h2 className="text-3xl font-bold mb-4">{company_name}</h2>
-                    <div className="flex justify-between items-center mb-2">
-                        <p className="text-xl">Location: {location}</p>
-                        <p className="text-xl">Industry: {industry}</p>
+                    <h2 className="text-3xl font-bold mb-4 text-center">{company_name}</h2>
+                    <div className="flex flex-row justify-between items-start">
+                        <div>
+                            <p className="text-xl mb-4">Location: {location}</p>
+                            <p className="text-xl mb-4">Industry: {industry}</p>
+                            <p className="text-lg mb-2">{description}</p>
+                        </div>
+                        <img src={logoUrl} alt="Company Logo" className="w-40 h-40 rounded-full mr-4" />
                     </div>
-                    <p className="text-lg mb-2">{description}</p>
                 </div>
                 <div className="bg-gray-200 text-sm px-4 py-2 flex justify-between">
                     <div>
-                        <p className="mb-1">{present ? "Present" : "Not Present"}</p>
-                        <p className="text-xs text-gray-500">Created: {createdAt}</p>
-                        <p className="text-xs text-gray-500">Updated: {updatedAt}</p>
+                        <p className="text-xs text-gray-500">Created: {dateFormat(createdAt)}</p>
+                        <p className="text-xs text-gray-500">Updated: {dateFormat(updatedAt)}</p>
                     </div>
                     <div>
                         <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg mr-2" onClick={() => openUpdateModal()}>Update</button>
@@ -188,12 +200,13 @@ export default function BusinessDetails({ id, company_name, Projects, location, 
                     </div>
                 </div>
             </div>
+            <div className='flex justify-end'>
+                <button className='bg-blue-300 py-2 m-4 w-40 rounded-lg' onClick={openModal}>
+                    ADD PROJECTss
+                </button>
+            </div>
+            <div className='flex-1 grid grid-cols-4 gap-4 justify-end'>
 
-            <div className='bg-blue-200 flex-1 grid grid-cols-4 gap-4 justify-end'>
-
-                <div className='w-[300px] h-[350px] bg-blue-300 mt-4 ml-4 rounded-2xl' onClick={openModal}>
-                    ADD PROJECT
-                </div>
                 {Projects.slice(0, 3).map((project, index) => (
                     <ProjectCardData projectData={project} handleProDetails={() => handleProDetails(project)} key={project.id} />
                 ))}

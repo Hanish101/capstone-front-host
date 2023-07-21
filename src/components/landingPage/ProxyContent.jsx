@@ -13,7 +13,7 @@ export default function ProxyContent() {
           Wanna take your carrier to next level?
         </div>
         <div className="text-gray-700 pb-4">Boost your career to next level with Project Listing and explore new opportunity</div>
-        <button className='px-8 py-3 rounded-lg bg-backblack text-white'>Sign up for free</button>
+        <button className='px-8 py-3 rounded-lg bg-backblack text-white' onClick="/entry" >Sign up for free</button>
       </div>
 
       {/* Specification gird */}
@@ -137,7 +137,7 @@ export default function ProxyContent() {
 
         </div>
         <div className='flex justify-center'>
-          <button className='px-8 py-3 rounded-lg bg-backblack text-white'>Sign up as a Organisaton</button>
+          <button className='px-8 py-3 rounded-lg bg-backblack text-white' onClick="/entry/compsignup">Sign up as a Organisaton</button>
 
         </div>
         {/* <div className='flex flex-col items-center justify-center'>

@@ -1,6 +1,18 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function CompanyNavbar({ activePage, onPageChange }) {
+
+    const navigate = useNavigate()
+
+    const logoutFunction = () => {
+        localStorage.removeItem('accessToken')
+        localStorage.removeItem('accessTokenCreationDate')
+        localStorage.removeItem('userID')
+        navigate('/')
+
+    }
+
 
     return (
 
@@ -30,6 +42,7 @@ export default function CompanyNavbar({ activePage, onPageChange }) {
                             <span className="text-gray-800">H</span>
                         </div>
                         <span className="text-white ml-2">Hanish Patil</span>
+                        <button className='bg-white px-2 py-1 rounded-lg mx-6 hover:bg-gray-200' onClick={logoutFunction}>Log out</button>
                     </div>
                 </div>
             </div>

@@ -53,9 +53,9 @@ export default function DevloperDetailedCard({devData}) {
                 </div>
               </div>
             </div>
-            <button className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg" onClick={handleRecruitClick}>
+            {/* <button className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg" onClick={handleRecruitClick}>
               Recruit
-            </button>
+            </button> */}
           </div>
   
           <div className="mb-4">

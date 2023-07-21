@@ -44,7 +44,9 @@ export default function CompanySignUp() {
             localStorage.setItem('accessToken', token);
             localStorage.setItem('accessTokenCreationDate', currentDate.toISOString());
 
-            navigate('/companyhome')
+            if(1){
+              navigate('/companyhome')
+            }
 
           }
           else {

@@ -12,7 +12,6 @@ export default function Login() {
 
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
-  const [accessToken, setAccessToken] = useState("")
 
 
   const handleLogin = async (event) => {
@@ -38,18 +37,15 @@ export default function Login() {
           if (data.token) {
             console.log("___token exists__", data.token)
             console.log("___Dev existance___", data.dev)
-            const token = data.token;
-            setAccessToken(token)
 
             const currentDate = new Date();
-            localStorage.setItem('accessToken', token);
+            localStorage.setItem('accessToken', data.token);
             localStorage.setItem('accessTokenCreationDate', currentDate.toISOString());
-            localStorage.setItem('userID', data.id);
-
+            
             if((data.dev) == 'false' ){
-              // console.log("Dev dosent exist")
               navigate('/entry/devreg')
             }else{
+              localStorage.setItem('userID', data.id);
               navigate('/dashboard')
             }
           }
@@ -58,9 +54,9 @@ export default function Login() {
             toast(data.message)
           }
         })
-        .catch((err) => {
-          console.log("__error__", err)
-        })
+        // .catch((err) => {
+        //   console.log("__error__", err)
+        // })
 
 
     } catch (error) {
