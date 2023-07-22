@@ -67,6 +67,7 @@ export default function CompanySignIn() {
 
   return (
     <div className='register flex flex-col items-center'>
+      <ToastContainer/>
       <h1 className="text-5xl block pb-2 text-center">Organisation Login</h1>
       <h1 className="text-lg mb-4 pb-4 block text-center">Login to your Organisation account</h1>
       <div className="max-w-md w-full p-8">

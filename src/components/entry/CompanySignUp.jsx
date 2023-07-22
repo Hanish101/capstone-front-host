@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { API_LINK } from '../../../constants'
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function CompanySignUp() {
 
   const navigate = useNavigate()
@@ -65,7 +68,7 @@ export default function CompanySignUp() {
 
   return (
     <div className='register flex flex-col items-center'>
-
+      <ToastContainer />
       <h1 className="text-5xl block pb-2 text-center">Create a company account</h1>
       <h1 className="text-lg mb-4 pb-4 block text-center">Register using name or contact</h1>
       <div className="max-w-md w-full p-8">
