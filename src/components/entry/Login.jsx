@@ -41,7 +41,8 @@ export default function Login() {
             const currentDate = new Date();
             localStorage.setItem('accessToken', data.token);
             localStorage.setItem('accessTokenCreationDate', currentDate.toISOString());
-            
+
+                     
             if((data.dev) == 'false' ){
               navigate('/entry/devreg')
             }else{
@@ -54,11 +55,6 @@ export default function Login() {
             toast(data.message)
           }
         })
-        // .catch((err) => {
-        //   console.log("__error__", err)
-        // })
-
-
     } catch (error) {
 
     }
@@ -82,6 +78,7 @@ export default function Login() {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               className="w-full px-4 py-2 rounded border-2 border-gray-500 focus:border-secondary focus:outline-none"
+              required
             />
           </div>
           <div className="mb-4">
@@ -94,6 +91,7 @@ export default function Login() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full px-4 py-2 rounded border-2 border-gray-500 focus:border-secondary focus:outline-none"
+              required
             />
           </div>
           

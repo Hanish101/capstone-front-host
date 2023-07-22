@@ -24,10 +24,16 @@ export default function ProjectCardData({ projectData, handleProDetails }) {
         cardpurple: '#D5C4F7',
         cardgreen: '#A8E3D8',
         cardblue: '#B0E8FF',
-        cardgrey: '#D0D3DB',
         cardyellow: '#FFDDA0',
-        cardbrown: '#C3B29D',
-        // cardred: '#FFB7B7',
+        cdb4db: '#cdb4db',
+        ffc8dd: '#ffc8dd',
+        ffafcc: '#ffafcc',
+        a2d2ff: '#a2d2ff',
+        bde0fe: '#bde0fe',
+        b8e0d2: '#b8e0d2',
+        a539ad9: '#539ad9',
+        f79d65: '#f79d65',
+        f25c54: '#f25c54',
     };
 
     

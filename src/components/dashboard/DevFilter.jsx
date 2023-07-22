@@ -91,7 +91,7 @@ export default function DevFilter({ handleFilterSelect }) {
                 />
                 <label className='mx-3 text-lg'  htmlFor='price=desc'>High to Low</label>
             </div>
-            <div className='py-1' key='none'>
+            <div className='mt-10' key='none'>
                 <input
                     type="radio"
                     id='filternone'
@@ -101,9 +101,9 @@ export default function DevFilter({ handleFilterSelect }) {
                     onChange={handleSkillChange}
                     className="form-radio h-4 w-4 rounded-sm text-blue-500 transition duration-150 ease-in-out"
                 />
-                <label className='mx-3 text-lg' htmlFor='filternone'>None</label>
+                <label className='mx-3 text-lg' htmlFor='filternone'>Clear</label>
             </div>
-            <p>Selected filter: {selectedSkill}</p>
+            {/* <p>Selected filter: {selectedSkill}</p> */}
         </div>
     );
 }

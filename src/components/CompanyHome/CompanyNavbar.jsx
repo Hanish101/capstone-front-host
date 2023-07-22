@@ -21,7 +21,7 @@ export default function CompanyNavbar({ activePage, onPageChange }) {
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center">
                         <div className="flex-shrink-0">
-                            <span className="text-white font-semibold text-3xl">Logo</span>
+                            <span className="flex-1 text-center text-4xl font-semibold text-white hidden md:block">SkillHub</span>
                         </div>
                     </div>
                     <div className="hidden sm:block">

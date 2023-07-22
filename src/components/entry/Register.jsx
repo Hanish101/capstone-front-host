@@ -12,7 +12,6 @@ export default function Register() {
   const [username, setUsername] = useState("")
   const [name, setName] = useState("")
   const [password, setPassword] = useState("")
-  const [accessToken, setAccessToken] = useState("")
 
   const handleSignIn = async (event) => {
     event.preventDefault()
@@ -24,7 +23,7 @@ export default function Register() {
 
 
     try {
-      fetch( `${API_LINK}/user/signup`, {
+      fetch(`${API_LINK}/user/signup`, {
         method: 'POST',
         body: JSON.stringify({ username, password, name }),
         headers: {
@@ -41,7 +40,6 @@ export default function Register() {
           if (data.token) {
             console.log("___token exists__", data.token)
             const token = data.token;
-            setAccessToken(token)
 
             const currentDate = new Date();
             localStorage.setItem('accessToken', token);
@@ -57,12 +55,10 @@ export default function Register() {
           }
         })
         .catch((err) => {
-          console.log("__error__", err)
+          toast("__error__", err)
         })
-
-        
-
-    } catch (error) {
+    }
+    catch (error) {
     }
   }
 
@@ -83,6 +79,9 @@ export default function Register() {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               className="w-full px-4 py-2 rounded border-2 border-gray-500 focus:border-secondary focus:outline-none "
+              minLength= "8"
+              required
+
             />
           </div>
           <div className="mb-4">
@@ -107,6 +106,8 @@ export default function Register() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full px-4 py-2 rounded border-2 border-gray-500 focus:border-secondary focus:outline-none"
+              minLength= "8"
+              required
             />
           </div>
           <button
@@ -117,7 +118,6 @@ export default function Register() {
           </button>
           <div className='block pb-2 text-center'>Already have an account? <Link to='/entry/login' className='pr-1 text-secondary-dark'>Log in</Link></div>
 
-          {/* {accessToken && <div className="mt-4 break-all">Access Token: {accessToken}</div>} */}
         </form>
       </div>
     </div>

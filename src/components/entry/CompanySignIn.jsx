@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { API_LINK } from '../../../constants'
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function CompanySignIn() {
 
   const navigate = useNavigate()
@@ -14,7 +17,7 @@ export default function CompanySignIn() {
   const handleLogin = async (event) => {
     event.preventDefault()
 
-    console.log("___clicked___", username, "___pass___", password)
+    // console.log("___clicked___", username, "___pass___", password)
 
     try {
       fetch(`${API_LINK}/company/signin`, {
@@ -39,6 +42,7 @@ export default function CompanySignIn() {
             const currentDate = new Date();
             localStorage.setItem('accessToken', token);
             localStorage.setItem('accessTokenCreationDate', currentDate.toISOString());
+            localStorage.removeItem('userID')
 
             if(1){
               navigate('/companyhome')
@@ -47,16 +51,16 @@ export default function CompanySignIn() {
           }
           else {
             console.log("___token dosen't exist___")
-            alert(data.message)
+            toast(data.message)
           }
         })
         .catch((err) => {
-          console.log("__error__", err)
+          toast("__error__", err)
         })
 
 
     } catch (error) {
-
+      toast(error)
     }
   }
 
@@ -77,6 +81,7 @@ export default function CompanySignIn() {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               className="w-full px-4 py-2 rounded border-2 border-gray-500 focus:border-secondary focus:outline-none "
+              required
             />
           </div>
           <div className="mb-4">
@@ -89,6 +94,7 @@ export default function CompanySignIn() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full px-4 py-2 rounded border-2 border-gray-500 focus:border-secondary focus:outline-none"
+              required
             />
           </div>
           <button

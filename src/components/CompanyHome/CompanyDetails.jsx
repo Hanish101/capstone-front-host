@@ -36,17 +36,19 @@ export default function CompanyDetails({ handleBusinessClicked }) {
             body:formData,
             headers: { 
                 Authorization: `Bearer ${token}`,
-                // 'Content-Type': 'multipart/form-data',
             }
         })
         .then((response)=>response.json())
-        .then((data)=> console.log(data))
+        .then((data)=> {
+            toast("Business Added Successfully")
+            fetchOrgData();
+        })
         .catch((error)=> {console.log(error)})
 
         closeModal()
 
-    }
 
+    }
 
     useEffect(() => {
         fetchOrgData();
@@ -104,7 +106,7 @@ export default function CompanyDetails({ handleBusinessClicked }) {
                                 <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                                     <div className="sm:flex sm:items-start">
                                         <div className="mt-3 text-center sm:mt-0 sm:text-left">
-                                            <h3 className="text-lg leading-6 font-medium text-gray-900 mb-4">Add Project</h3>
+                                            <h3 className="text-lg leading-6 font-medium text-gray-900 mb-4">Add Business</h3>
                                             <form onSubmit={handleSubmit}>
                                                 <div className="mb-4">
                                                     <label htmlFor="companyName" className="block mb-2">

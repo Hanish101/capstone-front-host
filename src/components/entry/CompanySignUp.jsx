@@ -43,6 +43,7 @@ export default function CompanySignUp() {
             const currentDate = new Date();
             localStorage.setItem('accessToken', token);
             localStorage.setItem('accessTokenCreationDate', currentDate.toISOString());
+            localStorage.removeItem('userID')
 
             if(1){
               navigate('/companyhome')
@@ -51,7 +52,7 @@ export default function CompanySignUp() {
           }
           else {
             console.log("___token dosen't exist___")
-            alert(data.message)
+            toast(data.message)
           }
         })
         .catch((err) => {
@@ -79,6 +80,7 @@ export default function CompanySignUp() {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               className="w-full px-4 py-2 rounded border-2 border-gray-500 focus:border-secondary focus:outline-none "
+              required
             />
           </div>
           <div className="mb-4">
@@ -103,6 +105,7 @@ export default function CompanySignUp() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full px-4 py-2 rounded border-2 border-gray-500 focus:border-secondary focus:outline-none"
+              required
             />
           </div>
           <button

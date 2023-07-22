@@ -46,7 +46,7 @@ export default function DevFilter({ handleFilterSelect }) {
                 />
                 <label htmlFor='filternone'>none</label>
             </div>
-            <p>Selected Skill: {selectedSkill}</p>
+            {/* <p>Selected Skill: {selectedSkill}</p> */}
         </div>
     );
 }

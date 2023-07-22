@@ -112,6 +112,7 @@ export default function Projectdetails({ projectData, projectView }) {
             toast(data.message)
           }
           console.log("___Update___", data.data)
+          toast("Project details updated")
         })
 
         .catch((err) => toast(err))
@@ -149,6 +150,7 @@ export default function Projectdetails({ projectData, projectView }) {
             console.log("___error___", data.error)
           }
           console.log("___delete___", data.data)
+          toast("project deleted")
         })
         .catch((err) => toast(err))
     }

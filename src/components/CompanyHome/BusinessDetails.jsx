@@ -100,7 +100,9 @@ export default function BusinessDetails({ id, company_name,logoUrl, Projects, lo
             }
         })
             .then((response) => response.json())
-            .then((data) => console.log(data))
+            .then((data) => {
+                toast("Business details updates")
+            })
             .catch((err) => toast(err))
 
         closeModal();
@@ -137,6 +139,7 @@ export default function BusinessDetails({ id, company_name,logoUrl, Projects, lo
                     if (data.message) {
                         toast(data.message)
                     }
+                    toast('Business details updated')
                     console.log("___update___", data.data)
                 })
                 .catch((err) => toast(err))
@@ -161,8 +164,9 @@ export default function BusinessDetails({ id, company_name,logoUrl, Projects, lo
                 .then((response) => response.json())
                 .then((data) => {
                     if (data.message) {
-                        toast(data.message)
+                        toast("Business deleted")
                     }
+                    toast("Business deleted")
                     console.log("___delete___", data.message)
                 })
                 .catch((err) => toast(err))

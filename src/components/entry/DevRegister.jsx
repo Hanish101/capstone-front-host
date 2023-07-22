@@ -95,17 +95,13 @@ export default function DevRegister() {
                 if (data.message) {
                     toast(data.message)
                 }
-                if(data.id){
+                if(data.data.id){
                     localStorage.setItem('userID', data.data.id);
-
-                    if(1){
-                        navigate('/dashboard')
-                    }
-
                 }
+                navigate('/dashboard')
             })
             .catch((err) => {
-                console.log("__error__", err)
+                toast("__error__", err)
             })
 
 
@@ -130,6 +126,7 @@ export default function DevRegister() {
                             id="image"
                             onChange={(e) => setFile(e.target.files[0])}
                             className="w-full px-4 py-2 rounded border-2 border-gray-500 focus:border-secondary focus:outline-none"
+                            required
                         />
                     </div>
 
@@ -143,6 +140,7 @@ export default function DevRegister() {
                             value={devFName}
                             onChange={(e) => setDevFName(e.target.value)}
                             className="w-full px-4 py-2 rounded border-2 border-gray-500 focus:border-secondary focus:outline-none"
+                            required
                         />
                     </div>
                     <div className="mb-4">
@@ -155,6 +153,7 @@ export default function DevRegister() {
                             value={devLName}
                             onChange={(e) => setDevLName(e.target.value)}
                             className="w-full px-4 py-2 rounded border-2 border-gray-500 focus:border-secondary focus:outline-none"
+                            required
                         />
                     </div>
                     <div className="mb-4">
@@ -167,6 +166,7 @@ export default function DevRegister() {
                             value={price}
                             onChange={(e) => setPrice(e.target.value)}
                             className="w-full px-4 py-2 rounded border-2 border-gray-500 focus:border-secondary focus:outline-none"
+                            required
                         />
                     </div>
 
